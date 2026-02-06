@@ -1,0 +1,29 @@
+{
+  "name": "claude-code-gmail-skill",
+  "version": "1.0.0",
+  "description": "Claude Code skill for Gmail management via natural language",
+  "type": "module",
+  "scripts": {
+    "auth": "node .claude/skills/gmail/scripts/auth.js",
+    "list": "node .claude/skills/gmail/scripts/list.js",
+    "get": "node .claude/skills/gmail/scripts/get.js",
+    "send": "node .claude/skills/gmail/scripts/send.js",
+    "search": "node .claude/skills/gmail/scripts/search.js",
+    "modify": "node .claude/skills/gmail/scripts/modify.js"
+  },
+  "dependencies": {
+    "googleapis": "^105.0.0",
+    "@google-cloud/local-auth": "^2.1.0",
+    "open": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "claude-code",
+    "gmail",
+    "email",
+    "skill"
+  ],
+  "license": "MIT"
+}
