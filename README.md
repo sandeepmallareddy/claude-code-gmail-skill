@@ -146,6 +146,96 @@ Follow the browser prompts to authorize access. Tokens are stored securely in `~
 
 ---
 
+## Installing as a Claude Code Skill
+
+You can install this skill in two ways depending on your needs:
+
+| Method | Location | Scope | Best For |
+|--------|----------|-------|----------|
+| **Global** | `~/.claude/skills/gmail/` | All projects | Personal use across all work |
+| **Per-Project** | `.claude/skills/gmail/` | Single project | Team sharing, version control |
+
+### Option 1: Global Installation (Recommended)
+
+Install globally to use the Gmail skill in all your Claude Code projects:
+
+```bash
+# Clone to global skills directory
+git clone https://github.com/sandeepmallareddy/claude-code-gmail-skill.git ~/.claude/skills/gmail
+cd ~/.claude/skills/gmail
+npm install
+
+# Set up credentials
+cp /path/to/your/credentials.json ./credentials.json
+npm run auth
+
+# Move credentials to secure location (optional but recommended)
+mkdir -p ~/.config/claude-gmail
+mv credentials.json ~/.config/claude-gmail/
+```
+
+**Result:** The Gmail skill is now available in all your Claude Code projects.
+
+**Update later:**
+```bash
+cd ~/.claude/skills/gmail
+git pull origin main
+npm install
+```
+
+### Option 2: Per-Project Installation
+
+Install in a specific project directory:
+
+```bash
+# Clone as subdirectory in your project
+git clone https://github.com/sandeepmallareddy/claude-code-gmail-skill.git .claude/skills/gmail
+cd .claude/skills/gmail
+npm install
+
+# Set up credentials in project root
+cp credentials.json ./
+
+# Authenticate
+npm run auth
+```
+
+**Result:** The Gmail skill works only in this project. Commit `.claude/` to share with your team.
+
+### Directory Structure
+
+When installed, the skill expects this structure:
+
+```
+~/.claude/                    # or your project root
+└── skills/
+    └── gmail/
+        ├── SKILL.md              # Required: skill definition
+        ├── scripts/
+        │   ├── auth.js           # OAuth authentication
+        │   ├── list.js           # List messages
+        │   ├── get.js            # Read messages
+        │   ├── send.js           # Send/compose emails
+        │   ├── search.js         # Search messages
+        │   ├── modify.js         # Label/archive operations
+        │   └── lib/
+        │       ├── gmail.js      # API client wrapper
+        │       └── formatter.js  # Response formatting
+        ├── package.json
+        └── README.md
+```
+
+### Verification
+
+After installation, restart Claude Code and try:
+
+```
+You: Show my unread emails
+Claude: [Uses gmail skill to list your emails]
+```
+
+---
+
 ## Usage
 
 ### Claude Code Commands
