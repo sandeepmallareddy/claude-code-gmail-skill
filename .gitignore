@@ -47,7 +47,6 @@ Thumbs.db
 .project
 .classpath
 .settings/
-.vscode/
 .codekit*
 plist
 
@@ -95,14 +94,20 @@ debug.log
 .LSOverride
 
 # === Linux ===
-.trash
+.trash/
 
 # === Windows ===
 Desktop.ini
 $RECYCLE.BIN/
 Icon?
 ehthumbs.db
-*/
+
+# === Claude Code Skills (DO NOT IGNORE) ===
+.claude/
+
+# === Test Suites (DO NOT IGNORE) ===
+tests/
+mocks/
 
 # === Custom ===
 # Local configurations
